@@ -21,8 +21,7 @@ function App() {
   }
 
   function onHandleSubmit(data) {
-    setToys([
-      ...toys, data])
+    setToys([...toys, data])
   }
 
   return (
@@ -40,6 +39,7 @@ function App() {
         baseUrl = { baseUrl }
         toys = { toys }
         setToys = { setToys }
+        // onHandleSubmit = { onHandleSubmit }
       />
     </>
   );

@@ -4,7 +4,6 @@ import ToyCard from "./ToyCard";
 function ToyContainer({ baseUrl, toys, setToys }) {
 
   function onHandleLikeClick(id, likes) {
-    console.log(id, likes)
     fetch(baseUrl+`${id}`, {
       method: "PATCH",
       headers: {
@@ -16,24 +15,12 @@ function ToyContainer({ baseUrl, toys, setToys }) {
     })
     .then(r => r.json())
     .then(data =>{
-      console.log(data);
-      console.log(data.likes);
-      // setToys()
-      const updatedToys = toys.find(toy => {
-        if (toy.id === id) {
-          return toy.likes === data.likes
-        }
-        console.log(updatedToys);
-      })
-      
+      const updatedToys = toys.filter(toy => {
+        return toy.id !== id
+      }).toSpliced((id-1),0,data)
+      setToys(updatedToys);
     })
   }
-
-    // const likedToys = toys.map(toy => {
-    //   if (toy.id === id) {
-    //     toy.likes + 1
-    //   }
-    // })
 
   function onHandleDonate(id) {
     fetch(baseUrl+`${id}`,{

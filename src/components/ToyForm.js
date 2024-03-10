@@ -5,8 +5,6 @@ function ToyForm({ baseUrl, onHandleSubmit }) {
     name: "",
     image: ""
   });
-  // const [toyNameInput, setToyNameInput] = useState("");
-  // const [toyImageInput, setToyImageInput ] = useState("");
 
   const { name, image } = formData;
 

@@ -8,9 +8,6 @@ function ToyCard({toy, onHandleLikeClick, onHandleDonate}) {
   }
   
   function handleLikeClick() {
-    console.log(id, likes);
-    // let newLikes = likes + 1;
-    // console.log(newLikes);
     onHandleLikeClick(id, likes);
   }
 
