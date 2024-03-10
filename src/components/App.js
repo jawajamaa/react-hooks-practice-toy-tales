@@ -20,14 +20,24 @@ function App() {
     setShowForm((showForm) => !showForm);
   }
 
+  function onHandleSubmit(data) {
+    setToys([
+      ...toys, data])
+  }
+
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? 
+        <ToyForm
+        baseUrl = { baseUrl } 
+        onHandleSubmit = { onHandleSubmit }
+        /> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
       <ToyContainer 
+        baseUrl = { baseUrl }
         toys = { toys }
         setToys = { setToys }
       />

@@ -1,10 +1,19 @@
 import React from "react";
 
-function ToyCard({toy}) {
-  const {name, image, likes} = toy;
+function ToyCard({toy, onHandleLikeClick, onHandleDonate}) {
+  const {id, name, image, likes} = toy;
 
-  console.log(name, image, likes);
+  function handleClick() {
+    onHandleDonate(id);
+  }
   
+  function handleLikeClick() {
+    console.log(id, likes);
+    // let newLikes = likes + 1;
+    // console.log(newLikes);
+    onHandleLikeClick(id, likes);
+  }
+
   return (
     <div className="card">
       <h2>{ name }</h2>
@@ -14,8 +23,18 @@ function ToyCard({toy}) {
         className="toy-avatar"
       />
       <p>{ likes } Likes </p>
-      <button className="like-btn">Like {"<3"}</button>
-      <button className="del-btn">Donate to GoodWill</button>
+      <button 
+        className="like-btn"
+        onClick = { handleLikeClick }
+        >
+          Like {"<3"}
+          </button>
+      <button 
+        className="del-btn"
+        onClick = { handleClick }
+        >
+          Donate to GoodWill
+          </button>
     </div>
   );
 }
